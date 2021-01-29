@@ -31,3 +31,12 @@
         value_template: '{{ state_attr('binary_sensor.brigid_s_leak_sensor_129', 'battery') }}'
         friendly_name: 'Leak Sensor Battery Bridgid'
         device_class: battery
+
+
+#Try this one in stead
+
+  - platform: template
+    sensors:
+      leaksensor_bridgid_battery:
+        value_template: '{{ states.binary_sensor.brigid_s_leak_sensor_129.attributes.battery }}'
+        friendly_name: 'Leak Sensor Battery Bridgid'
