@@ -1,0 +1,24 @@
+#Example template sensor for Enio:
+# inside your sensors.yaml file
+
+  - platform: template
+    sensors:
+      h_fan:
+        value_template: '{{ states.climate.living_room.attributes.fan }}'
+        friendly_name: 'HVAC Fan'
+        
+        
+#can also be written as... (this method can be better)        
+  - platform: template
+    sensors:
+      h_fan:
+        value_template: '{{ state_attr('states.climate.living_room', 'fan') }}'
+        friendly_name: 'HVAC Fan'
+        
+#Blank template... (this method can be better)        
+  - platform: template
+    sensors:
+      mysensorattributename:
+        value_template: '{{ state_attr('states.sensorname', 'attributename') }}'
+        friendly_name: 'name of your template sensor'
+        device_class: battery
