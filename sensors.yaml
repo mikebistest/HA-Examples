@@ -19,6 +19,6 @@
   - platform: template
     sensors:
       mysensorattributename:
-        value_template: '{{ state_attr('states.sensorname', 'attributename') }}'
+        value_template: '{{ state_attr('sensor.mysensor', 'attributename') }}'
         friendly_name: 'name of your template sensor'
         device_class: battery
