@@ -22,3 +22,12 @@
         value_template: '{{ state_attr('sensor.mysensor', 'attributename') }}'
         friendly_name: 'name of your template sensor'
         device_class: battery
+
+
+#for enio cause he cant do it himself        
+  - platform: template
+    sensors:
+      leaksensor_bridgid_battery:
+        value_template: '{{ state_attr('binary_sensor.brigid_s_leak_sensor_129', 'battery') }}'
+        friendly_name: 'Leak Sensor Battery Bridgid'
+        device_class: battery
