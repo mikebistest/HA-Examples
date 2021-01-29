@@ -1,0 +1,44 @@
+##########################################
+# BINARY SENSOR EXAMPLES
+##########################################
+
+  - platform: template
+    sensors:
+      hvac_aircon:
+        device_class: cold
+        value_template: "{{ is_state('sensor.h_operation','cooling') }}"
+        friendly_name: Air Conditioner
+
+      hvac_furnace:
+        device_class: heat
+        value_template: "{{ is_state('sensor.h_operation','heating') }}"
+        friendly_name: Furnace
+
+      motion_kitchen:
+        value_template: "{{ is_state('sensor.vision_security_zp3111_multisensor_4in1_burglar','8') }}"
+        friendly_name: Kitchen Motion
+        device_class: motion
+
+      motion_zooz1:
+        value_template: "{{ is_state('sensor.zooz1_burglar','8') }}"
+        friendly_name: Zooz1 Motion
+        device_class: motion
+
+      sliding_door:
+        entity_id:
+          - sensor.elexa_consumer_products_inc_dome_door_window_sensor_access_control_4
+        device_class: door
+        value_template: >-
+          {{ states("sensor.elexa_consumer_products_inc_dome_door_window_sensor_access_control_4") }}
+
+  - platform: ping
+    host: 8.8.8.8
+    name: GoogleDNS
+    count: 2
+    scan_interval: 30
+    
+  - platform: ping
+    host: 10.0.20.201
+    name: XiaomiCovered network status
+    count: 2
+    scan_interval: 30
