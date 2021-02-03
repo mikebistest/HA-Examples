@@ -1,0 +1,20 @@
+
+
+#alert:
+
+
+
+  garage_door:
+    name: Garage is open
+    done_message: Garage is closed
+    entity_id: binary_sensor.garage_door_state
+    state: "on"
+    repeat: 
+      - 3
+      - 5
+      - 10
+      - 15
+    can_acknowledge: true
+    skip_first: true
+    notifiers:
+      - mikepushover
